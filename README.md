@@ -1,2 +1,2 @@
 # apitest
-Testing github's api.
+Testing Github's api.
