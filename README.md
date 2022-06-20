@@ -1,2 +1,2 @@
 # apitest
-Testing Github's api.
+Testing Github's api. It's not good with tags.
