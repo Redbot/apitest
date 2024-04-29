@@ -12,9 +12,57 @@
 #   CWTN: | -- don't forget the pipe
 #     -
 #     --
-#   MQ2ClassPlugin: | -- don't forget the pipe.
+#   MQ2ClassPlugin: | -- don't forget the pipe
 #     -
 #     --
+04/29/2024b:
+  CWTN:
+    - updated faq for charming on enchanter
+    - you can no longer use a negative pull radius
+    - you can no longer use a negative zhigh
+    - you can no longer use a negative zlow 
+04/29/2024:
+  CWTNCommons:
+    - updated faq for charming on enchanter
+    - you can no longer use a negative pull radius
+    - you can no longer use a negative zhigh
+    - you can no longer use a negative zlow 
+  MQ2Wizard:
+    - fixed missing sarith
+    -  fixed random Ethereal Ice spell at 95
+    - Ward of destruction, during burns with aoe usage on
+04/26/2024:
+  MQ2Wizard:
+    - Added Concussion, Arcane Whisper, and Mind Crash usage
+    - - added DeaggroAtAggro and DeaggroAtHealth values
+    - Corrected loadout issue with gem 11
+04/25/2024:
+  MQ2Wizard:
+    - (reminder) MQ2Wizard will be going to paid next scheduled patch to EQ (likely May 15th, 2024)
+    - - I hope everyone has enjoyed the free trial and thank you to anyone who has reported any issues during the free beta period
+    - added Exfiltrate, Depart, Decession, and Greater Decession to portals
+  MQ2Mage:
+    - fixed an issue with SummonedNuke
+  MQ2Monk:
+    - CounterDisc is now gated behind ModernEndRegen and/or if you are burning
+04/21/2024:
+  MQ2Enchanter: |
+    - bugfix for Focus of Arcanum
+04/20/2024:
+  CWTNCommons: |
+    - adjust how we check if we have the mount we want when using a mount
+  MQ2Necro:
+    - if we don't have convergence AA, and we're out of combat and have someone needing a rez, we'll memorize (if not byos or byos custom is set) rez spell and use
+    - undeadmez will now only try and mez undead targets
+    - - thanks AMS
+    - ScreamingTerrorMez now correctly checks its range instead of undeadmez's range
+  MQ2Wizard:
+    - MQ2Wizard will be going to paid next scheduled patch to EQ (likely May 15th, 2024)
+    - - I hope everyone has enjoyed the free trial and thank you to anyone who has reported any issues during the free beta period
+04/14/2024:
+  MQ2Wizard: |
+    - Corrected alliance check
+    - - thx malamber
 04/11/2024:
   CWTN: |
     - We will now click off Illusion: Plaguebringer despite it having additional effects.
