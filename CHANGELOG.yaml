@@ -15,10 +15,6 @@
 #   MQ2ClassPlugin: | -- don't forget the pipe.
 #     -
 #     --
-04/14/2024:
-  MQ2Wizard: |
-    - Corrected alliance check
-    - - thx malamber
 04/11/2024:
   CWTN: |
     - We will now click off Illusion: Plaguebringer despite it having additional effects.
