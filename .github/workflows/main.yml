@@ -15,7 +15,7 @@ jobs:
       - name: Push to RedGuides
         uses: ./
         with:
-          resource-id: '1337'
+          resource_id: '1337'
           file: 'goblin.zip'
           version: '1.0.1'
           message: 'Test commit message'
