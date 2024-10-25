@@ -1,0 +1,23 @@
+name: Test RedGuides Push
+
+on:
+  push:
+    branches: [ main ]
+  # Optional: Allow manual triggers
+  workflow_dispatch:
+
+jobs:
+  push-to-redguides:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Push to RedGuides
+        uses: RedGuides/redguides-publish@main
+        with:
+          resource-id: '1337'
+          file: 'goblin.zip'
+          version: '1.0.1'
+          message: 'Test commit message'
+        env:
+          REDGUIDES_API_KEY: ${{ secrets.REDGUIDES_API_KEY }}
