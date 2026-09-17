@@ -1,7 +1,7 @@
 local M = {}
 
-function M.version()
-    return '0.1.0'
+function M.greet(name)
+    return string.format("\\ay[apitest]\\ax hello, %s", name)
 end
 
 return M

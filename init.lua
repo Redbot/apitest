@@ -1,9 +1,8 @@
--- GitForo test script
-local mq = require('mq')
-local util = require('apitest.lib.util')
+local mq = require("mq")
+local util = require("apitest.lib.util")
 
-local function main()
-    print(string.format('apitest %s loaded', util.version()))
+print(util.greet("RedGuides"))
+
+while true do
+    mq.delay(1000)
 end
-
-main()
