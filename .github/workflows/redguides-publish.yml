@@ -2,10 +2,8 @@ name: Publish to RedGuides
 
 on:
   push:
-    tags:
-      - 'v[0-9]*'
-      - 'V[0-9]*'
-      - '[0-9]*'
+    branches:
+      - "main"
 
 jobs:
   publish:
@@ -17,19 +15,19 @@ jobs:
 
       - name: Prepare the release
         id: release
+        env:
+          BEFORE: ${{ github.event.before }}
         run: |
-          VERSION_TAG='^[vV]?[0-9]+(\.[0-9]+)*([-+_]|$)'
-          if [[ ! "$GITHUB_REF_NAME" =~ $VERSION_TAG ]]; then echo "$GITHUB_REF_NAME is not a version tag"; exit 0; fi
-          VERSION="$GITHUB_REF_NAME"
+          VERSION="$(date -u +%Y-%m-%d)"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          PREVIOUS=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || true)
-          git log --no-merges -n 50 --format="- %s ([%h]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/%H)) ~%an" ${PREVIOUS:+"$PREVIOUS..HEAD"} > rg_release_notes.md
+          RANGE=HEAD
+          if git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then RANGE="$BEFORE..HEAD"; fi
+          git log --no-merges -n 50 --format="- %s ([%h]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/%H)) ~%an" "$RANGE" > rg_release_notes.md
           FILE="apitest.zip"
           git archive --format=zip --prefix=apitest/ -o "$FILE" HEAD -- . ':!.*' ':!*/.*'
           echo "file=$FILE" >> "$GITHUB_OUTPUT"
 
       - name: Publish to RedGuides
-        if: steps.release.outputs.version != ''
         uses: RedGuides/redguides-publish@v1
         env:
           REDGUIDES_API_KEY: ${{ secrets.REDGUIDES_API_KEY }}
