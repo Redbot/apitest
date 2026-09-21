@@ -17,8 +17,11 @@ jobs:
         id: release
         env:
           BEFORE: ${{ github.event.before }}
+          REDGUIDES_API_KEY: ${{ secrets.REDGUIDES_API_KEY }}
         run: |
           VERSION="$(date -u +%Y-%m-%d)"
+          CURRENT=$(curl -sf -H "XF-Api-Key: $REDGUIDES_API_KEY" https://www.redguides.com/community/api/resources/1742 | jq -r '.resource.version // ""' || true)
+          if [[ "$CURRENT" == "$VERSION"* ]]; then VERSION="$VERSION-${GITHUB_SHA::7}"; fi
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           RANGE=HEAD
           if git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then RANGE="$BEFORE..HEAD"; fi
@@ -36,4 +39,4 @@ jobs:
           version: ${{ steps.release.outputs.version }}
           message: rg_release_notes.md
           file: ${{ steps.release.outputs.file }}
-          domain: "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}/"
+          domain: "https://github.com/${{ github.repository }}/tree/${{ github.sha }}/"
